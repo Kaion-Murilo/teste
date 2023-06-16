@@ -218,7 +218,7 @@ def get_usuarios():
 
 
 @app.route('/catalogo')
-def popo(cinemas_proximos: Optional = None):
+def popo(cinemas_proximos=None):
   # Fazendo a solicitação à API do TMDb
   url = f'https://api.themoviedb.org/3/movie/popular?api_key={api_key}&language={idioma}'
   response = requests.get(url)
@@ -257,10 +257,10 @@ def home():
 
 @app.route('/cinemas_proximos')
 def cinemas():
-  #latitude = -5.81116
-  #longitude = -35.2063
-  latitude = request.args.get('latitude')
-  longitude = request.args.get('longitude')
+  latitude = -5.81116
+  longitude = -35.2063
+  # latitude = request.args.get('latitude')
+  # longitude = request.args.get('longitude')
   # Configuração da chave de API do Yelp Fusion
   api_key = 'qkmjt6x-ZIXrixQqc_CwuLDjApx6-48wbzRBo_3gVo3KcvGOxT05VB8QkGQex9EMG8J0zYHzeL0uiBZI_FkaT4D-EYSFpOuvDCEOn4KKRk0Z3V6COG_0OC-ggduAZHYx'
 
@@ -293,6 +293,8 @@ def cinemas():
         'endereco':
         ', '.join(cinema['location']['display_address'])
       })
+    if cinemas_proximos == None:
+      return popo(cinemas_proximos=None)
   return popo(cinemas_proximos)
 
 
