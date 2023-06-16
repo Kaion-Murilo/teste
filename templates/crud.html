@@ -1,0 +1,59 @@
+<h2>Adicionar Usuário</h2>
+<form action="/crud" method="post">
+    <input type="hidden" name="action" value="add">
+    <input type="text" name="username" placeholder="Nome de usuário" required>
+    <input type="password" name="password" placeholder="Senha" required>
+    <button type="submit">Cadastrar</button>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th>Usuário</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for user in users %}
+        <tr>
+            <td>ID: {{ user.id }}</td>
+        </tr>
+        <tr>
+            <td>Usuário: {{ user.username }}</td>
+        </tr>
+        <tr>
+            <td>Senha: {{ user.password }}</td>
+        </tr>
+        <tr>
+            <td>Comentários:</td>
+        </tr>
+        {% if user.comentarios %}
+            {% for comentario in user.comentarios %}
+                <tr>
+                    <td>{{ comentario.comentario }}</td>
+                </tr>
+            {% endfor %}
+        {% else %}
+            <tr>
+                <td>Nenhum comentário disponível.</td>
+            </tr>
+        {% endif %}
+        <tr>
+            <td>
+                <form action="/crud" method="post">
+                    <input type="hidden" name="action" value="update">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <input type="text" name="username" value="{{ user.username }}" placeholder="Novo nome de usuário" required>
+                    <input type="password" name="password" placeholder="Nova senha" required>
+                    <input type="text" name="comentario" placeholder="Editar o comentário">
+                    <button type="submit">Modificar</button>
+                </form>
+                <form action="/crud" method="post">
+                    <input type="hidden" name="action" value="delete">
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
+                    <button type="submit">Excluir</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

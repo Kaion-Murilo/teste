@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecionar Filme</title>
+
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/chat.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/catalogo.css')}}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+</head>
+<body>
+  <header>{% include 'navbar.html' %}</header>
+
+    <main>  
+    {% if cinemas %}
+         <h1 id="cinema">Cinemas Próximos</h1>
+          <ul>
+          {% for cinema in cinemas %}
+              <li>
+                  <h3>{{ cinema['nome'] }}</h3>
+                  <p>{{ cinema['endereco'] }}</p>
+              </li>
+          {% endfor %}
+          </ul>
+    {% else %}
+        <p id="nenhum-cinema" class="alert-message">Nenhum cinema encontrado.</p>
+    
+    {% endif %}
+       <h1>Catalogo de filmes</h1>
+    
+        <div class="container-fluid mt-x" id="teste">
+          
+            <div class="row">
+                {% for filme in filmes %}
+                <div class="col-sm-6 col-md-4 col-lg-3 col-xl-3 ma">
+                    <a href="{{ url_for('leiamais', nome_filme=filme['title']) }}" class="card d-flex card-margin">
+                        <img src="https://image.tmdb.org/t/p/w500/{{ filme['poster_path'] }}" class="card-img-top" alt="Poster do Filme">
+                        <div class="card-body">
+                            <h5 class="card-title {% if filme['title'] == 'Neo' %}neo{% endif %}">{{ filme['title'] }}</h5>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+</main>
+
+   
+<script src="{{ url_for('static', filename='js/funcao3.js') }}"></script>
+<script src="{{ url_for('static', filename='js/catalogo.js') }}"></script>
+<script src="{{ url_for('static', filename='js/alert.js') }}"></script>
+</body>
+</html>

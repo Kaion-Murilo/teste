@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/chat.css')}}">
+    <title>Document</title>
+</head>
+<body>
+<header>
+
+            <div class="nav container">
+            <a href="/catalogo" class="logo">Critic<span>Wave</span></a>
+            <form  action="/buscar" method="POST">
+                <div class="search-box">
+                    <input type="search" name="titulo" id="titulo" placeholder="Procurar filme">
+                    <button type="submit" style="background-color:#CCCCCC;">
+                        <i class="bi bi-search"></i>
+                    </button>
+                </div>
+            </form>
+            <div class="navbar">
+                <a href="/catalogo" class="nav-link ">
+                    <i class="bi bi-house"></i>
+                <span class="nav-link-title">Inicio</span>
+                </a>
+              
+                <a href="/cinemas_proximos" onclick="goToCinema()" class="nav-link">
+                    <i class="bi bi-camera-reels"></i>
+                <span class="nav-link-title">Cinemas</span>
+                </a>
+                <a href="/registro" class="nav-link">
+                    <i class="bi bi-person-lines-fill"></i>
+                <span class="nav-link-title">Cadastrar</span>
+                </a>
+                <a href="/login" class="nav-link">
+                    <i class="bi bi-person"></i>
+                <span class="nav-link-title">Login</span>
+                </a>
+            </div>
+        </div>
+
+
+
+    </header>
+
+     
+        <script src="{{ url_for('static', filename='js/chat.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='css/desaine.css')}}">
+    <title>Filmes</title>
+    <script src="{{ url_for('.static', filename='js/funcao1.js') }}"></script>
+
+    
+
+    
+</head>
+<body>
+{% include 'navbar.html' %}
+<script src="{{ url_for('.static', filename='js/funcao2.js') }}"></script>
+<div class="container1   custom-bg">
+  <div class="container1 custom-container">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="card">
+                  {% if poster_url %}
+                      <img src="{{ poster_url }}" alt="Poster do Filme" class="img-fluid" id="logo">
+                  {% endif %}
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="card-body text-white">
+                <h5 class="card-title custom-yellow-dark">{{ title }}</h5>
+                  <p>{{ overview }}</p>
+                  <p>Data de Lançamento: {{ release_date }}</p>          
+                  <p>Avaliação TMDb: {{ rating }}</p>                 
+                  <p>Número de avaliações no TMDb: {{ num_ratings }}</p>         
+                  <div id="dados-container" style="display: none;">
+                    {% if av_meu != 0 and quant_total != 0 and quant_banco_nota != 0 and quant_banco_avali != 0 %}
+                      <p>Avaliação CRITICWAVE+TMDb: {{ av_meu }}</p>
+                      <p>Número de avaliações CRITICWAVE+TMDb: {{ quant_total }}</p>
+                      <!-- numero de avalicoes que e 5 geral  -->
+                      <p>Avaliação CRITICWAVE: {{ quant_banco_nota|round(2) }}</p>
+                      <p>Número de avaliações no CRITICWAVE: {{ quant_banco_avali }}</p>
+                    {% else %}
+                      <p>Primeira vez aqui? Faça uma avaliação para nos ajudar ;D</p>
+                    {% endif %}
+                  </div>
+                  
+              </div>
+             
+          </div>
+          <div class="col-md-4 custom-bg-third">
+              <!-- Terceira coluna -->
+
+                    <form action="/avali" method="POST">
+                      <div class="rating">
+                        <input type="radio" id="star10" name="rating" value="10">
+                        <label for="star10"></label>
+                        <input type="radio" id="star9" name="rating" value="9">
+                        <label for="star9"></label>
+                        <input type="radio" id="star8" name="rating" value="8">
+                        <label for="star8"></label>
+                        <input type="radio" id="star7" name="rating" value="7">
+                        <label for="star7"></label>
+                        <input type="radio" id="star6" name="rating" value="6">
+                        <label for="star6"></label>
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5"></label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4"></label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3"></label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2"></label>
+                        <input type="radio" id="star1" name="rating" value="1">
+                        <label for="star1"></label>
+                      </div>
+                      <button type="submit">Enviar Classificação</button>
+                      <button type="button" onclick="toggleDados()">Mostrar/Ocultar Dados</button>
+                    </form>
+              <h6>Agora me conta o que você achou do filme ?</h6>
+              <form id="form1"action="{{ url_for('cadastrar_comentario') }}" method="POST">
+                <form  class="form-inline ml-auto" action="{{ url_for('buscar_filme') }}" method="POST">
+                 <div class="form-group">
+                   <input type="hidden" name="movie" value="{{ title }}">
+                   <label class='title-k' for="input_comentario"></label>
+                   <input class="form title-k" id="input_comentario" name="comment" rows="2" required></input>
+                 </div>
+                 <button type="submit" class="btn btn-primary title-k" name="form1_submit">Enviar</button>
+               </form>
+  
+
+              <div class="d-flex justify-content-center" style="min-width: 18%px; max-height: 36%px;">
+                <div class="container custom-container" style="min-width: 18%px; max-height: 36%px;">
+                  <div class="rounded-2 bg-white p-3 mt-3 w-100" style="min-width: 18%px; max-height: 15%px; overflow-y: auto;">
+                    <h5 class="text-center mb-3">Comentários</h5>
+                    <div id="comments-container" style="min-width: 18%px; max-height: 200px; overflow-y: auto; overflow-x: auto;">
+                      {% for comentario in comentarios %}
+                        <div class="comentario">
+                          <p class='title-k'><strong>{{ comentario.user_id }}</strong>: {{ comentario.comment }}</p>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  </div>
+                  <div class="copyright">
+                    <p>&#169; Plurikaleidos entrenimentos </p>
+                  </div>
+                  
+                </div>
+             
+              
+              </div>
+              
+              
+          </div>
+          </div>
+      </div>
+  </div>
+</div>
+</body>
+
+
+</html>

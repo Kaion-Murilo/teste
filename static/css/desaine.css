@@ -1,0 +1,288 @@
+
+body{
+    height:98%;
+   width: 98%;
+  /* overflow: hidden; */
+
+}
+
+.actor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 150px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.actor-card img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* Adiciona estilos para o quadro das informações do filme */
+.film-info-card {
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  margin-top: 70px; /* Adiciona uma margem superior para evitar a sobreposição do navbar */
+}
+
+.film-info-card h2 {
+  margin-bottom: 10px;
+}
+
+.film-info-card p {
+  margin-bottom: 5px;
+}
+
+/* Mostra uma lista em vez do carrossel em telas menores */
+@media (max-width: 767.98px) {
+  #carouselExample {
+      display: none;
+  }
+  
+  .mobile-actors-list {
+      display: block;
+  }
+  main{
+    margin-left:12px;
+  }
+}
+
+.mobile-actors-list {
+  display: none;
+}
+
+.mobile-actors-list .actor-card {
+  margin: 0 auto;
+}
+
+/* Esconde as linhas adicionais do quadro por padrão */
+.film-info-card .row:not(:first-child) {
+  display: none;
+}
+
+/* Adiciona estilo ao botão "Mostrar Mais" */
+.show-more-button {
+  margin-top: 10px;
+  text-align: center;
+}
+/* Estilos para telas menores que 576px (ex: smartphones em modo retrato) */
+@media (max-width: 576px) {
+.container1.custom-bg {
+padding: 10px;
+  margin-top:50px;
+  padding-top:10px;
+}
+
+.container1 .row {
+flex-direction: column;
+}
+
+.container1 .col-md-6 {
+margin-bottom: 20px;
+
+}
+
+.container1 .card {
+height: auto;
+}
+}
+
+/* Estilos para telas maiores que 576px (ex: tablets e desktops) */
+@media (min-width: 577px) {
+.container1 .row {
+flex-direction: row;
+}
+}
+.cor {
+color: #FF0000;
+}
+.post-input {
+width: 49%;
+padding: 10px;
+margin-bottom: 10px;
+resize: vertical;
+}
+.rating {
+display: inline-block;
+}
+
+.rating input {
+display: none;
+}
+
+.rating label {
+float: right;
+cursor: pointer;
+color: #ccc;
+}
+.container1{
+  height:500px;
+}
+.rating label:before {
+content: '\2605';
+font-size: 25px;
+}
+
+.rating input:checked ~ label,
+.rating:not(:checked) label:hover,
+.rating:not(:checked) label:hover ~ label {
+color: #ffcc00;
+}
+
+.rating input:checked + label:hover,
+.rating input:checked ~ label:hover,
+.rating label:hover ~ input:checked ~ label,
+.rating input:checked ~ label:hover ~ label {
+color: #ffcc00;
+}
+.rating label:before {
+content: '\2605';
+font-size: 40px;
+}
+.post-button {
+background-color: #FF0000;
+color: #FFFFFF;
+border-radius: 5px;
+padding: 10px 20px;
+border: none;
+cursor: pointer;
+}
+
+.post-button:hover {
+background-color: #FF5555;
+}
+
+.text-white {
+color: #FFFFFF;
+}
+.container1 + .container1 {
+margin-top: 20px;
+}
+
+.nome {
+height: 100px;
+
+
+}
+.close-button {
+position: absolute;
+top: 10px;
+right: 10px;
+background-color: transparent;
+border: none;
+color: #000;
+font-size: px;
+cursor: pointer;
+
+}
+.comments-container1 {
+background-color: #FFFFFF;
+margin-top: 20px; /* Ajuste o valor conforme necessário */
+}
+/*container de baixo*/
+.custom-bg-bottom {
+background-color: #87CEFA;/* cor desejada para o container de baixo */
+width: 100%;
+height: 700px;
+}
+.comments-container {
+display: flex;
+flex-direction: column-reverse;
+}
+.comments-container {
+background-color: #FFFFFF;
+color: #000000;
+font-size: 16px;
+padding: 10px;
+}
+
+.name-input {
+color: #000000;
+font-size: 18px;
+}
+
+.comment-input {
+color: #000;
+font-size: 200%;
+}
+
+.comment-button {
+background-color: #1C1C1C;
+color: #FFFFFF;
+font-size: 16px;
+border: none;
+padding: 10px 20px;
+cursor: pointer;
+border-radius: 10%;
+}
+
+.comment-button:hover {
+background-color: yellowgreen;
+}
+.comment-text {
+text-align: left;
+padding-left: 30px;
+}
+.bgcatalogo{
+background: #00BFFF;
+height: 100%;
+color: #fff;
+text-align: justify-all;
+padding-top: 20px;
+
+}
+.custom-bg-third {
+background-color: #f5f5f5; /* Define a cor de fundo desejada */
+
+}
+.rating-question {
+margin-bottom: -5px; /* Ajuste o valor da margem conforme necessário */
+color: blue;
+font-weight: bold;
+}
+.rating{
+margin-bottom: -20px ;
+
+}
+.comment {
+margin-bottom: 15px; /* Ajuste o valor do espaçamento conforme necessário */
+}
+.custom-bg-thirdp{
+/* margin-top: 10px; */
+}
+h6 {
+color: blue;
+}
+.custom-yellow-dark {
+color: #e2b607; /* Código de cor para amarelo escuro */
+}
+.custom-container {
+ /* Altura desejada */
+margin-top: 90px;
+
+
+}
+h5 {
+color: blue; /* Substitua "red" pela cor desejada */
+}
+.comentario {
+  color: black; /* Defina a cor desejada aqui */
+}
+.copyright{
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 60px;
+    color:cornflowerblue;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nome indefinido</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('.static', filename='css/style.css')}}">
+</head>
+<body>
+      <div>
+        <section>
+            <div class="form-box">
+                <div class="form-value">
+                    <form action="/registro" method="POST">
+                        <h2>Criar conta!</h2>
+                        <div class="inputbox">
+                            <ion-icon name="people-outline"></ion-icon>
+                            <input type="text" id=input_nome name=input_nome placeholder="                   EX:JoãoMachado5000" required>
+                            <label for="">Usuario</label>
+                        </div>
+                        <div class="inputbox">
+                            <ion-icon name="lock-closed-outline"></ion-icon>
+                            <input type="password" id=input_senha name=input_senha required>
+                            <label for="">Senha</label>
+                        </div>
+                        <button type="submit">Cadastrar</button>
+                        <div class="register">
+                            <p><a href="login">Logar</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <div class="grade"></div>
+      <div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
